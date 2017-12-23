@@ -53,3 +53,20 @@ cqlsh:mydb> select * from test;
 
 (1 rows)
 cqlsh:mydb>
+
+
+
+# list
+# Describe Keyspaces -此命令列出集群中的所有键空间。下面给出了这个命令的用法。
+
+cqlsh:tutorialspoint> describe keyspaces;
+
+system_traces system tp tutorialspoint
+# Describe tables -此命令列出了键空间中的所有表。下面给出了这个命令的用法。
+
+cqlsh:tutorialspoint> describe tables;
+emp
+# Describe tables -此命令提供表的描述。下面给出了这个命令的用法。
+
+cqlsh:tutorialspoint> describe table emp;
+
