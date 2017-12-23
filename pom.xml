@@ -24,36 +24,80 @@
 
 
     <repositories>
-        <!--<repository>-->
-            <!--<id>repository.springframework.maven.milestone</id>-->
-            <!--<name>Spring Framework Maven Milestone Repository</name>-->
-            <!--<url>http://repo.spring.io/milestone/</url>-->
-        <!--</repository>-->
+        <repository>
+            <id>repository.springframework.maven.milestone</id>
+            <name>Spring Framework Maven Milestone Repository</name>
+            <url>http://repo.spring.io/milestone/</url>
+        </repository>
     </repositories>
 
 
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-cql -->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.data</groupId>-->
+            <!--<artifactId>spring-cql</artifactId>-->
+            <!--<version>2.0.0.M3</version>-->
+        <!--</dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-cassandra -->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.data</groupId>-->
+            <!--<artifactId>spring-data-cassandra</artifactId>-->
+            <!--<version>2.0.2.RELEASE</version>-->
+        <!--</dependency>-->
+
+        <!-- https://mvnrepository.com/artifact/com.datastax.cassandra/cassandra-driver-core -->
+        <dependency>
+            <groupId>com.datastax.cassandra</groupId>
+            <artifactId>cassandra-driver-core</artifactId>
+            <version>3.3.2</version>
+            <!--<classifier>shaded</classifier>-->
+            <!-- Because the shaded JAR uses the original POM, you still need
+                to exclude this dependency explicitly: -->
+            <exclusions>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.apache.cassandra/cassandra-all -->
         <dependency>
             <groupId>org.apache.cassandra</groupId>
             <artifactId>cassandra-all</artifactId>
             <version>3.11.1</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.netty</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.netty/netty-all -->
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>4.1.18.Final</version>
+        </dependency>
+
+
         <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.apache.cassandra/apache-cassandra &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.cassandra</groupId>-->
-            <!--<artifactId>apache-cassandra</artifactId>-->
-            <!--<version>3.11.1</version>-->
-            <!--<type>pom</type>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.apache.cassandra</groupId>
+            <artifactId>apache-cassandra</artifactId>
+            <version>3.11.1</version>
+            <type>pom</type>
+        </dependency>
         <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.apache.cassandra/cassandra-parent &ndash;&gt;-->
-        <!--<dependency>-->
-            <!--<groupId>org.apache.cassandra</groupId>-->
-            <!--<artifactId>cassandra-parent</artifactId>-->
-            <!--<version>3.11.1</version>-->
-            <!--<type>pom</type>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.apache.cassandra</groupId>
+            <artifactId>cassandra-parent</artifactId>
+            <version>3.11.1</version>
+            <type>pom</type>
+        </dependency>
 
 
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->

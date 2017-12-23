@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cassandra="http://www.springframework.org/schema/data/cassandra"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/cql http://www.springframework.org/schema/cql/spring-cql-1.0.xsd
+http://www.springframework.org/schema/data/cassandra http://www.springframework.org/schema/data/cassandra/spring-cassandra-1.0.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+    <!-- cassandra配置 -->
+    <context:property-placeholder location="classpath:cassandra.properties" />
+
+    <!-- 配置链接 ip 端口 -->
+    <cassandra:cluster contact-points="${cassandra.contactpoints}"
+                       port="${cassandra.port}" />
+
+    <!-- 配置keyspace -->
+    <cassandra:session keyspace-name="${cassandra.keyspace}" />
+    <!-- REQUIRED: The Default Cassandra Mapping Context used by CassandraConverter -->
+    <cassandra:mapping />
+
+    <!-- REQUIRED: The Default Cassandra Converter used by CassandraTemplate -->
+    <cassandra:converter />
+
+    <!-- REQUIRED: The Cassandra Template is the building block of all Spring
+    Data Cassandra -->
+    <cassandra:template id="cassandraTemplate" />
+    <cassandra:template id="cqlTemplate" />
+
+    <!-- OPTIONAL: If you are using Spring Data Cassandra Repositories, add
+    your base packages to scan here -->
+    <cassandra:repositories base-package="com.abin.lee" />
+    <context:annotation-config />
+</beans>

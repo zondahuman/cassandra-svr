@@ -25,6 +25,7 @@ import org.apache.thrift.transport.TTransport;
  * java 操作 cassandra 增删改查
  * @author chuer
  * @date 2014年12月30日 下午4:24:09
+ * http://blog.csdn.net/maosijunzi/article/details/42268061
  */
 public class TestCassandra {
     private TTransport tr;
@@ -48,6 +49,7 @@ public class TestCassandra {
     }
 
     public void setKeySpace(String keyspace) throws Exception {
+//        client.system_add_keyspace(keyspace);
         client.set_keyspace(keyspace);// 使用myKeyspace keyspace
     }
 
@@ -207,9 +209,11 @@ public class TestCassandra {
     }
 
     public static void main(String[] args) throws Exception {
-        TestCassandra tc = new TestCassandra("127.0.0.1", 9160);
+//        TestCassandra tc = new TestCassandra("172.16.2.132", 9160);
+//        TestCassandra tc = new TestCassandra("127.0.0.1", 9160);
+        TestCassandra tc = new TestCassandra("localhost", 9160);
         tc.open();
-        tc.setKeySpace("usermanager");
+        tc.setKeySpace("abin_ks");
 
 //		tc.insert("users");
 

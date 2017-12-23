@@ -1,0 +1,55 @@
+# Initialing Cql
+CREATE KEYSPACE abin_ks WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};
+
+create column family users with comparator=UTF8Type;
+create column family users with column_type='Super'and comparator=UTF8Type and default_validation_class=UTF8Type;
+
+
+# 对应的CQL建表语句
+CREATE TABLE abin_ks.person (
+    id text PRIMARY KEY,
+    age int,
+    name text
+)
+
+# 对应的CQL建表语句
+
+CREATE TABLE mydb.person2 (
+    id text,
+    name text,
+    age int,
+    PRIMARY KEY (id, name)
+) WITH CLUSTERING ORDER BY (name DESC)
+
+
+
+# 查看keyspace
+DESCRIBE keyspaces;
+
+# 查看tables
+describe tables;
+
+
+
+
+
+# cql 操作 cqlsh.sh(cqlsh.bat)
+cqlsh> DESCRIBE keyspaces;
+
+abin_ks        system_auth  yiibai_ks           system_traces
+system_schema  system       system_distributed  mydb
+
+cqlsh> use mydb
+   ... ;
+cqlsh:mydb> describe tables;
+
+test
+
+cqlsh:mydb> select * from test;
+
+ a  | b | c  | d
+----+---+----+---
+ a2 | 4 | c2 | 6
+
+(1 rows)
+cqlsh:mydb>

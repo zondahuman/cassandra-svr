@@ -6,4 +6,6 @@ package com.abin.lee.cassandra.service;
  * com.abin.lee.cassandra.service
  */
 public interface CassandraService {
+
+
 }
