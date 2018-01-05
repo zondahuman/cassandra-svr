@@ -22,7 +22,8 @@ public class CassandraTest {
         try {
 //            System.setProperty("spark.cassandra.connection.local_dc", cass.getDC());
             cluster = Cluster.builder()                                                    // (1)
-                    .addContactPoints("localhost")
+                    .addContactPoints("172.16.2.146")
+//                    .addContactPoints("localhost")
 //                    .addContactPoints("127.0.0.1")
                     .withProtocolVersion(ProtocolVersion.V3)
                     .withCompression(ProtocolOptions.Compression.LZ4)
@@ -68,7 +69,13 @@ public class CassandraTest {
      */
     public static void insert()
     {
-        String cql = "INSERT INTO mydb.test (a , b , c , d ) VALUES ( 'a2',4,'c2',6);";
+        int random = (int)(Math.random()*100);
+        String one =  "a"+ random+2;
+        int two =  random;
+        String three =  "c"+ random;
+        int four =  random+4;
+//        String cql = "INSERT INTO mydb.test (a , b , c , d ) VALUES ( 'a2',4,'c2',6);";
+        String cql = "INSERT INTO mydb.test (a , b , c , d ) VALUES ( '"+one+"','"+two+"','"+three+"',');";
         session.execute(cql);
     }
 
@@ -125,8 +132,8 @@ public class CassandraTest {
 
     public static void main(String[] args) {
         connect();
-        createKeyspace();
-        createTable();
+//        createKeyspace();
+//        createTable();
         insert();
         close();
     }

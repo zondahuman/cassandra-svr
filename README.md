@@ -30,7 +30,7 @@ Create keyspace KeyspaceName with replicaton={'class':strategy name,
 
 
 
-
+Check your cassandra.yaml and make sure that your "listen_address" and "seeds" values match, with the exception that the seeds value requires quotes around it
 
 
 
