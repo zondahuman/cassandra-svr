@@ -75,7 +75,7 @@ public class CassandraTest {
         String three =  "c"+ random;
         int four =  random+4;
 //        String cql = "INSERT INTO mydb.test (a , b , c , d ) VALUES ( 'a2',4,'c2',6);";
-        String cql = "INSERT INTO mydb.test (a , b , c , d ) VALUES ( '"+one+"','"+two+"','"+three+"',');";
+        String cql = "INSERT INTO mydb.test (a , b , c , d ) VALUES ( '"+one+"',"+two+",'"+three+"',"+four+");";
         session.execute(cql);
     }
 
